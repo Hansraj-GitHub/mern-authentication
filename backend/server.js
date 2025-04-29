@@ -9,10 +9,7 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // Body parser
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  credentials: true
-})); // Cross-origin access
+app.use(cors()); // Cross-origin access
 
 // Connect to Database
 connectDB();
