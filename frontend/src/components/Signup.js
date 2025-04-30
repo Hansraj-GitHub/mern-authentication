@@ -12,11 +12,27 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/users/signup', { name, email, password });
+      console.log('Attempting to sign up with:', { name, email });
+      const response = await axios.post('https://your-render-backend-url/api/users/signup', { name, email, password });
+      console.log('Signup response:', response.data);
       alert(response.data.msg);
       navigate('/login'); // Redirect to login after signup
     } catch (error) {
-      alert(error.response.data.msg);
+      console.error('Signup error:', error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error('Error response:', error.response.data);
+        alert(error.response.data.msg || 'An error occurred during signup');
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received:', error.request);
+        alert('No response from server. Please check your connection.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error setting up request:', error.message);
+        alert('An error occurred. Please try again.');
+      }
     }
   };
 
