@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
     try {
       console.log('Attempting to login with:', { email });
-      const response = await axios.post('https://mern-authentication.onrender.com/api/users/login', { email, password });
+      const response = await axios.post('https://mern-authentication-asxc.onrender.com/api/users/login', { email, password });
       console.log('Login response:', response.data);
       alert(response.data.msg);
       navigate("/home"); // Redirect to a dashboard page

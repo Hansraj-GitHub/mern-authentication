@@ -13,7 +13,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       console.log('Attempting to sign up with:', { name, email });
-      const response = await axios.post('https://mern-authentication.onrender.com/api/users/signup', { name, email, password });
+      const response = await axios.post('https://mern-authentication-asxc.onrender.com/api/users/signup', { name, email, password });
       console.log('Signup response:', response.data);
       alert(response.data.msg);
       navigate('/login'); // Redirect to login after signup
